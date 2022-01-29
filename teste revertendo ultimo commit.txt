@@ -1,0 +1,21 @@
+Desfazendo um git push
+Não é possível desfazer um push diretamente, como é feito com o commit utilizando o comando $ git reset --soft|mixed|hard hash-do-penultimo-commit
+
+Para desfazer um push são necessários 3 passos:
+
+Utilizar o comando $ git reset --mixed hash-do-penultimo-commit e em seguida utilizar o comando $ git stash
+Utilizar o comando $ git revert hash-do-ultimo-commit
+-> SE APÓS ISSO EU DER UM GIT PUSH -f EU VOU APAGAR O ÚLTIMO COMMIT COM TUDO, ATÉ NO GITHUB VAI APAGAR O HISTÓRICO DESSE COMMIT
+
+Utilizar o comando $ git stash apply
+-> SERVE PARA VOLTAR AS ALTERAÇÕES QUE EU TIREI NO PASSO 1 (SE EU NÃO QUISER PERDER TUDO DO ÚLTIMO COMMIT QUE EU QUERO TIRAR, E SIM MODIFICAR ALGUMAS COISAS NELE"
+
+Explicação
+No passo 1, estamos recuperando os arquivos enviados com o git reset e criando um 'ponto de restauração' com o git stash para não perdermos as modificações enviadas.
+No passo 2, criamos um novo commit revertendo o commit anterior, apagando as modificações realizadas.
+No passo 3, utilizamos o 'ponto de restauração' criado no passo 1 para recuperar as modificações realizadas antes do push.
+
+Observação
+Para verificar os logs do commit podemos utilizar o comando $ git log --stat que mostra o hash, a descrição e os arquivos modificados nos commits.
+
+Pronto!
