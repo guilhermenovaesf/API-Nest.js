@@ -1,7 +1,5 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 
 import { CoursesModule } from './courses/courses.module';
 
@@ -19,7 +17,7 @@ import { CoursesModule } from './courses/courses.module';
       synchronize: true, //NUNCA utilizar em produção, ele não reflete o estado anterior e faz as alterações, ele recria o banco em cada atualização, solução = migrations
     }),
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
